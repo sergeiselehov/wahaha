@@ -15,7 +15,7 @@ class CreateVariantsTable extends Migration
     {
         Schema::create('variants', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->constrained('products');
+            $table->string('name');
             $table->float('price');
             $table->foreignId('unit_id')->constrained('units');
             $table->timestamps();

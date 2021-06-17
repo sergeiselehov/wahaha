@@ -15,9 +15,11 @@ class CreateOptionsTable extends Migration
     {
         Schema::create('options', function (Blueprint $table) {
             $table->id();
+            $table->string('external_option_id');
             $table->string('name');
-            $table->integer('value');
+            $table->text('description');
             $table->float('price');
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }
