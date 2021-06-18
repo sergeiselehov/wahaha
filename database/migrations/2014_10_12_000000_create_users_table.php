@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->nullable()->unique();
             $table->string('password');
             $table->string('phone')->unique();
-            $table->date('date_birth')->nullable();
+            $table->datetime('date_birth')->nullable();
             $table->string('avatar')->nullable();
             $table->boolean('is_mailing')->default(false);
             $table->boolean('is_push_sms')->default(false);

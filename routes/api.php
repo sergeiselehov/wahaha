@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\Auth\RegisterController;
 use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\SmsController;
 use App\Http\Controllers\Api\Auth\ResetPasswordController;
+use App\Http\Controllers\Api\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,5 +44,15 @@ Route::group(['prefix' => 'auth'], function () {
 
 //Auth
 Route::middleware('auth:api')->group(function () {
-    //
+    //Profile
+    Route::group(['prefix' => 'profile'], function () {
+        Route::get('{user}', [ProfileController::class, 'show']);
+        Route::group(['prefix' => 'update'], function () {
+            Route::put('{user}', [ProfileController::class, 'update']);
+            Route::put('avatar/{user}', [ProfileController::class, 'updateAvatar']);
+            Route::put('password/{user}', [ProfileController::class, 'updatePassword']);
+            Route::put('phone/{user}', [ProfileController::class, 'updatePhone']);
+        });
+    });
+
 });
