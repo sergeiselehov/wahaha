@@ -17,7 +17,6 @@ class CreateOptionsTable extends Migration
             $table->id();
             $table->string('external_option_id');
             $table->string('name');
-            $table->text('description');
             $table->float('price');
             $table->boolean('status')->default(true);
             $table->timestamps();

@@ -23,8 +23,7 @@ class Variant extends Model
      */
     protected $fillable = [
         'product_id',
-        'price',
-        'unit_id'
+        'price'
     ];
 
     /**
@@ -33,6 +32,7 @@ class Variant extends Model
      * @var array
      */
     protected $hidden = [
+        'unit_id',
         'created_at',
         'updated_at',
     ];

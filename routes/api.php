@@ -7,6 +7,8 @@ use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\SmsController;
 use App\Http\Controllers\Api\Auth\ResetPasswordController;
 use App\Http\Controllers\Api\ProfileController;
+use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,14 +47,21 @@ Route::group(['prefix' => 'auth'], function () {
 //Auth
 Route::middleware('auth:api')->group(function () {
     //Profile
-    Route::group(['prefix' => 'profile'], function () {
-        Route::get('{user}', [ProfileController::class, 'show']);
+    Route::group(['prefix' => 'profile/{user}'], function () {
+        Route::get('', [ProfileController::class, 'show']);
         Route::group(['prefix' => 'update'], function () {
-            Route::put('{user}', [ProfileController::class, 'update']);
-            Route::put('avatar/{user}', [ProfileController::class, 'updateAvatar']);
-            Route::put('password/{user}', [ProfileController::class, 'updatePassword']);
-            Route::put('phone/{user}', [ProfileController::class, 'updatePhone']);
+            Route::put('', [ProfileController::class, 'update']);
+            Route::put('avatar', [ProfileController::class, 'updateAvatar']);
+            Route::put('password', [ProfileController::class, 'updatePassword']);
+            Route::put('phone', [ProfileController::class, 'updatePhone']);
         });
     });
+
+    //Categories
+    Route::get('categories', [CategoryController::class, 'index']);
+
+    //Products
+    Route::get('products/{category}', [ProductController::class, 'index']);
+    Route::get('product/{product}', [ProductController::class, 'show']);
 
 });

@@ -17,6 +17,8 @@ class CreateVariantsTable extends Migration
             $table->id();
             $table->string('name');
             $table->float('price');
+            $table->text('description');
+            $table->foreignId('product_id')->constrained('products');
             $table->foreignId('unit_id')->constrained('units');
             $table->timestamps();
         });

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -23,8 +24,8 @@ class Option extends Model
      */
     protected $fillable = [
         'name',
-        'value',
-        'price'
+        'price',
+        'status'
     ];
 
     /**
@@ -36,4 +37,15 @@ class Option extends Model
         'created_at',
         'updated_at',
     ];
+
+    /**
+     * Scope a query to only include active options.
+     *
+     * @param Builder $query
+     * @return Builder
+     */
+    public function scopeActive($query)
+    {
+        return $query->where('status', true);
+    }
 }

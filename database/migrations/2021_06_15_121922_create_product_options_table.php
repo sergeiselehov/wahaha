@@ -17,7 +17,10 @@ class CreateProductOptionsTable extends Migration
             $table->id();
             $table->foreignId('product_id')->constrained('products');
             $table->foreignId('option_id')->constrained('options');
-            $table->integer('amount')->default(1);
+            $table->integer('default_amount')->default(0);
+            $table->integer('max_amount')->default(0);
+            $table->integer('min_amount')->default(0);
+            $table->boolean('required')->default(false);
             $table->timestamps();
         });
     }

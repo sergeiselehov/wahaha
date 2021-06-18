@@ -3,9 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class ProductOption extends Model
+class ProductOption extends Pivot
 {
     use HasFactory;
 
@@ -22,8 +22,10 @@ class ProductOption extends Model
      * @var array
      */
     protected $fillable = [
-        'product_id',
-        'option_id'
+        'default_amount',
+        'max_amount',
+        'min_amount',
+        'required'
     ];
 
     /**
@@ -32,6 +34,8 @@ class ProductOption extends Model
      * @var array
      */
     protected $hidden = [
+        'product_id',
+        'option_id',
         'created_at',
         'updated_at',
     ];

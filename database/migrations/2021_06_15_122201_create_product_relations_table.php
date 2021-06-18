@@ -15,6 +15,8 @@ class CreateProductRelationsTable extends Migration
     {
         Schema::create('product_relations', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('product_id')->constrained('products');
+            $table->foreignId('related_product_id')->constrained('products');
             $table->timestamps();
         });
     }

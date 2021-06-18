@@ -17,7 +17,7 @@ class CreateOrderItemsTable extends Migration
             $table->id();
             $table->foreignId('product_id')->constrained('products');
             $table->foreignId('product_option_id')->constrained('product_options');
-            $table->foreignId('product_variant_id')->constrained('product_variants');
+            $table->foreignId('variant_id')->constrained('variants');
             $table->timestamps();
         });
     }

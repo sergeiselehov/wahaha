@@ -11,7 +11,6 @@ use App\Services\UploadImageService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 
 
 class ProfileController extends Controller
@@ -63,7 +62,7 @@ class ProfileController extends Controller
      */
     public function updatePassword(UpdatePasswordRequest $request, User $user)
     {
-        if(Hash::check($request->password, $user->password)) {
+        if(Hash::check($request->current, $user->password)) {
             $user->update($request->toArray());
         } else {
             $error = ["current" => "Incorrect current password."];
