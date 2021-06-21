@@ -39,4 +39,12 @@ class ProductOption extends Pivot
         'created_at',
         'updated_at',
     ];
+
+    /**
+     * Get the options associated with the order item.
+     */
+    public function option()
+    {
+        return $this->hasOne(Option::class, 'id', 'option_id');
+    }
 }

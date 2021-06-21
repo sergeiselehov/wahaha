@@ -18,7 +18,9 @@ class CreateOrdersTable extends Migration
             $table->text('comment')->nullable();
             $table->boolean('quickly')->default(false);
             $table->time('to_time')->nullable();
-            $table->foreignId('promo_code_id')->constrained('promo_codes');
+            $table->smallInteger('status')->default(0);
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('promo_code_id')->nullable()->constrained('promo_codes');
             $table->foreignId('payment_type_id')->constrained('payment_types');
             $table->timestamps();
         });

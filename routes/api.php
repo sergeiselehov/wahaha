@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\Auth\ResetPasswordController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,5 +64,8 @@ Route::middleware('auth:api')->group(function () {
     //Products
     Route::get('products/{category}', [ProductController::class, 'index']);
     Route::get('product/{product}', [ProductController::class, 'show']);
+
+    //Orders
+    Route::get('orders', [OrderController::class, 'index']);
 
 });
